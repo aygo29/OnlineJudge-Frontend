@@ -15,3 +15,98 @@
     box-shadow: 1px 1px  white;
 }
 
+/*SECTION - 1*/
+
+.section-1{
+    display: flex;
+    overflow: hidden;
+}
+
+.nav-bar{
+    position: relative;
+    width: 20vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-bar div{
+    margin: 2px 2px;
+    background-color: black;
+    box-shadow: 2px 2px silver;
+    height: 16vh;
+    align-items: center;
+    padding-left: 100px;
+    padding-top: 50px;
+    font-size: 1.2rem;
+}
+
+.description{
+    margin: 2px 2px;
+    background-color: black;
+    box-shadow: 2px 2px silver;
+    width: 60vw;
+    font-size: 1.5rem;
+    padding:50px;
+}
+
+.user-info{
+    margin: 2px 2px;
+    background-color: black;
+    box-shadow: 2px 2px silver;
+    width: 20vw;
+}
+
+.user-info .profile-picture{
+    border-radius: 5px;
+    margin: 3px;
+    padding: 3px 6px;
+}
+
+.user-info .profile-picture img{
+    position: relative;
+    border-radius: 20px;
+}
+
+.profile-info{
+    margin: 20px 5px;
+    padding: 5px;
+}
+
+.profile-info h6{
+    margin: 20px 5px;
+    font-size:1.1rem;
+}
+
+/* SECTION - 2 */
+.upcoming-item{
+    display: flex;
+    overflow: hidden;
+    height: 70px;
+    border: 2px white;
+    margin: 2px;
+    background-color: black;
+    box-shadow: 2px 2px wheat;
+    width: 100%;
+}
+
+.upcoming-item h5{
+    padding-left: 2px;
+    font-size: larger;
+    width: 60%;
+}
+
+.upcoming-item h6{
+    padding-left: 2px;
+    font-size: larger;
+    width: 30%;
+}
+
+.upcoming-item button{
+    padding-left: 2px;
+    font-size: larger;
+    background-color: red;
+    border-radius: 20px;
+    height: 40px;
+    margin-top: 20px;
+}
