@@ -1,0 +1,17 @@
+.container{
+    background-color: rgba(23, 23, 23, 0.695);
+    color: silver;
+}
+/*HEADING OF THE PAGE */
+
+.heading{
+    align-items: center;
+    padding: 50px 200px;
+    position: relative;
+    align-self: center;
+    font-size: 100px;
+    background-color: black;
+    color: silver;
+    box-shadow: 1px 1px  white;
+}
+
