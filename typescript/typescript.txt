@@ -1,0 +1,272 @@
+https://www.youtube.com/watch?v=d56mG7DezGs&ab_channel=ProgrammingwithMosh
+
+After typescript installation
+to compile .ts file, run
+tsc.cmd <file_name>.ts 
+
+then 
+node <file_name>.js
+
+
+-------------------------------------------------------------
+let age:number =20;
+age = 50;
+console.log(age);
+
+-------------------------------------------------------------
+tsc.cmd --init 
+to create configuration file 
+
+Edit the directory settings in configuration file for easier usage
+-------------------------------------------------------------
+run 
+tsc.cmd 
+to compile all the typescript files in the source/root directory an dcreate javascript files in destination/export directory
+
+-------------------------------------------------------------
+Debugging 
+
+enable "sourceMap" option in tsconfig.json
+Then insert breakpoints in the code for debugging 
+
+Add 
+ "preLaunchTask": "tsc: build - tsconfig.json",
+in launch.json created using debug menu for nodeJs
+
+-------------------------------------------------------------
+
+let sales:number = 12_34_56_78_9;
+let course:string = "typescript";
+let is_published:boolean=true;
+
+//We dont have to compilosrily annotate each variable
+//It can be detected automatically
+let sale = 12_34_56_78_9;
+
+//If we dont assign value, typescript considers the type as "any"
+let saler;
+
+function render(document: any){
+    console.log(document);
+}
+-------------------------------------------------------------
+//Arrays
+
+let number = [1,2,3,'4'] //Javascript array is dynamic
+//This is how we use array in javascript
+
+//In typescript we can annotate the type of the array
+let num:number[] = [1,2,3]
+
+-------------------------------------------------------------
+//Tuple
+
+//Fixed length array
+let user: [number,string] = [1, 'mosh']
+-------------------------------------------------------------
+
+//Enums
+
+//List of related concept
+
+const enum Size {Small,Medium,Large}
+//Default value assignment starts from 0 to n
+//We can also assign letters to it
+
+let mySize:Size = Size.Medium;
+console.log(mySize);
+
+-------------------------------------------------------------
+
+//Functions
+
+function calculate(income: number, taxYear:number):number{ //taxYear?:number      //taxYear = 2022  for defualt parameter
+    if ((taxYear<2022))
+        return income*1.2
+
+    
+    //For detecting unused prameters and unusd variables
+    //change the configuration file seetings
+    
+    //Javascript by default returns undefined
+    //We can switch this off in configuration file
+
+    return 0;
+} 
+
+-------------------------------------------------------------
+
+// Object
+
+/*
+let employee = {id:1}
+employee.name = 'Mosh'
+
+//This is valid in Javascript
+
+*/
+
+let employee:{id:number,name:string} = {id:1,name:""}
+employee.name = 'Mosh'
+
+//We can also make name as optional  //  let employee:{id:number,name?:string}
+
+let employ:{
+    id:number,
+    name:string,
+    retire:(date:Date) =>void 
+} = {
+    id:1,
+    name:"Mosh",
+    retire:(date:Date)=>{
+        console.log(date);
+    }
+ }
+
+-------------------------------------------------------------
+
+ //Type Alias
+ //Creating custom types
+ type Employee = {
+    readonly id:number,
+    name :string,
+    retire : (date:Date)=>void 
+ }
+
+ -------------------------------------------------------------
+
+ //Union of types
+
+function kgToLbs(weight:number|string):number
+{
+    //Narrowing
+    if(typeof(weight)=='number')
+    {
+
+    }
+    else
+    {
+
+    }
+    return 82;
+}
+//Both are valid
+kgToLbs(10);
+kgToLbs('10Kg');
+
+ -------------------------------------------------------------
+
+ //Intersection
+
+type Draggable = {
+    drag: ()=>void
+}
+
+type Resizable = {
+    resize: ()=>void
+}
+
+type UIWidget = Draggable & Resizable
+
+let textBox:  UIWidget = {
+    drag:()=> {},
+    resize:()=>{},
+}
+
+-------------------------------------------------------------
+
+//Literal Types - to limit the values
+
+let quality: 50 | 100 = 100 ;
+
+type Quantity = 50|100 ;
+let quantity:Quantity = 50;
+
+-------------------------------------------------------------
+
+//Nullable types
+
+function greet(name:string|null|undefined)
+{
+    if (name)
+        console.log(name.toLocaleUpperCase());
+    else
+        console.log('Hola!');
+}
+
+greet(undefined);
+greet(null);
+
+-------------------------------------------------------------
+
+type Customer = {
+    birthday:Date 
+};
+
+function getCustomer(id:number):Customer|null{
+    return id==0?null:{birthday:new Date()}
+}
+
+let customer = getCustomer(0);
+
+
+if (customer!=null && customer!=undefined)
+    console.log(customer.birthday);
+
+//Tha above if statement can be removed and we can add optional parameters
+console.log(customer?.birthday);
+
+//checks if customer is null or not
+
+-------------------------------------------------------------
+
+type Customer = {
+    birthday?:Date  //Optional Date
+};
+
+function getCustomer(id:number):Customer|null{
+    return id==0?null:{birthday:new Date()}
+}
+
+let customer = getCustomer(0);
+
+
+if (customer!=null && customer!=undefined)
+    console.log(customer.birthday);
+
+//Tha above if statement can be removed and we can add optional parameters
+console.log(customer?.birthday?.getFullYear());
+
+
+//checks if customer is null or not, then again checks if birthday is null/undefined
+
+-------------------------------------------------------------
+
+type Customer = {
+    birthday?:Date 
+};
+
+function getCustomer(id:number):Customer|null{
+    return id==0?null:{birthday:new Date()}
+}
+
+let customer = getCustomer(1);
+
+console.log(customer?.birthday?.getFullYear());
+
+//Optional Element operator
+
+//if we had array of customers, then we have to use this
+//customers?.[0]
+//to check if the 0th element is present or not
+
+
+//optional call
+let log: any = null;
+log?.('a');
+//For example, here we are trying to use 'log' as a function'
+//But, log is just a variable
+//optional call checks if the log is function or not
+//if it is not function, it returns undefined
+
+-------------------------------------------------------------
