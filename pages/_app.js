@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/home.css'
 import {SessionProvider} from 'next-auth/react'
 
 function MyApp({ Component, pageProps, session }) {
